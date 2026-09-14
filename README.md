@@ -1,27 +1,30 @@
-# Daily Repository Snapshot
+# Daily Public Contribution Check
 
-This repository records one transparent, automated snapshot of its GitHub
-metadata each day. It is intentionally labeled as automation; it does not claim
-that the generated entries are hand-written development work.
+This repository transparently checks `yomnegede`'s public GitHub contribution
+count near the end of each day. If the count is zero before the automated check,
+it records the neutral status **No public contribution recorded**. If a public
+contribution already exists, the workflow makes no change.
 
-The snapshot includes the repository's stars, forks, open issues, and the commit
-that was current when the workflow started. Entries are stored by month under
-[`activity/`](activity/).
+The check does not claim that any specific work, internship, or project activity
+took place. Generated entries are stored by month under
+[`activity/daily-status/`](activity/daily-status/). The original repository
+snapshot from setup remains in `activity/` as historical data.
 
 ## Schedule
 
-The workflow runs daily at 9:17 AM in `America/New_York`. The non-round minute
-reduces the chance of GitHub Actions congestion. It can also be run manually
-from the **Actions** tab.
+The workflow runs daily at 11:47 PM in `America/New_York`, allowing nearly the
+entire day for ordinary contributions first. The non-round minute reduces the
+chance of GitHub Actions congestion. It can also be run manually from the
+**Actions** tab.
 
 ## Contribution attribution
 
-On every run, the workflow retrieves the numeric GitHub account ID for the
-workflow actor and uses GitHub's private `noreply` address format for the commit.
-The generated commit is pushed to the default branch using the repository's
-built-in `GITHUB_TOKEN`; no personal access token is stored.
+When a zero-contribution entry is needed, the workflow retrieves the numeric
+GitHub account ID for the workflow actor and uses GitHub's private `noreply`
+address format for the commit. The generated commit is pushed to the default
+branch using the repository's built-in `GITHUB_TOKEN`; no personal access token
+is stored in the repository.
 
 GitHub ultimately decides which activity qualifies for the profile contribution
 graph. A qualifying commit normally needs to be on the default branch of a
 standalone repository and use an email address associated with the account.
-
